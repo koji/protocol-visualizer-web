@@ -5,6 +5,6 @@ import App from './App'
 describe('App', () => {
   it('renders the product name', () => {
     render(<App />)
-    expect(screen.getByText('Protocol Visualizer')).toBeInTheDocument()
+    expect(screen.getAllByText('Protocol Visualizer').length).toBeGreaterThan(0)
   })
 })
