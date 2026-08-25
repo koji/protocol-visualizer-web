@@ -55,7 +55,13 @@ The primary goal is to convince Opentrons protocol authors to install the extens
 - `<title>`: `Protocol Visualizer — Simulate Opentrons protocols in VSCode`
 - meta description: `A VSCode extension that simulates Opentrons Python protocols and visualizes deck state and liquid volumes in real time.`
 - Hero tagline: `Simulate your Opentrons Python protocols and inspect deck layout and liquid volumes in real time — without leaving VSCode.`
-- Feature card copy: one title + one or two sentences each (see approved Section 4 of the design discussion).
+- Feature card copy (title + description):
+  1. **Real-time Deck Visualization** — Watch pipette moves, labware states, and liquid volume changes render as your protocol runs.
+  2. **Auto-analysis on Save** — Analysis reruns automatically every time you save your protocol file.
+  3. **Runtime Parameters UI** — Input fields are generated for runtime parameters; hit Analyze to apply them.
+  4. **Custom Labware Support** — Place custom labware JSON definitions next to your protocol file and they just work.
+  5. **Pop-out Window** — Detach the visualizer to a separate window via VSCode's Auxiliary Window support.
+  6. **Step Jumper** — Jump straight to any protocol step by number from the Protocol Steps panel.
 - Install copy follows `docs/Instllation.md` content adapted for web.
 
 ## Architecture
