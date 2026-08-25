@@ -1,0 +1,30 @@
+.section {
+  padding-block: 32px 88px;
+}
+
+.figure {
+  margin: 0;
+}
+
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 9;
+  border: 2px dashed var(--color-border);
+  border-radius: 16px;
+  background: var(--color-surface);
+}
+
+.beaker {
+  width: 96px;
+  height: auto;
+  color: var(--color-border);
+}
+
+.caption {
+  margin-top: 12px;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
