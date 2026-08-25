@@ -4,6 +4,7 @@ import { Header } from './components/Header/Header'
 import { Hero } from './components/Hero/Hero'
 import { Features } from './components/Features/Features'
 import { Screenshot } from './components/Screenshot/Screenshot'
+import { Install } from './components/Install/Install'
 
 export default function App(): ReactNode {
   const { theme, toggleTheme } = useTheme()
@@ -15,6 +16,7 @@ export default function App(): ReactNode {
       <Hero />
       <Features />
       <Screenshot />
+      <Install />
     </main>
     </div>
   )
