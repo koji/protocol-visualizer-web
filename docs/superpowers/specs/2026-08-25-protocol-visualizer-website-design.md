@@ -18,7 +18,7 @@ The primary goal is to convince Opentrons protocol authors to install the extens
 | Language | English only |
 | Tech stack | TypeScript, React 19, Vite, CSS Modules |
 | Theme | Dark & light with toggle; initial = OS `prefers-color-scheme`, manual choice persisted in `localStorage` |
-| Accent color | Cyan / teal family (dark: ~`#22d3ee`, light: ~`#0891b2`), AA contrast on both themes |
+| Accent color | Cyan / teal family (dark: ~`#22d3ee`, light: ~`#0e7490`), AA contrast on both themes |
 | Download CTA | Direct download of `.vsix` hosted on this site (`public/downloads/protocol-visualizer.vsix`) |
 | Until VSIX ready | Button disabled with "Coming soon" label, driven by a single config flag |
 | VSIX naming | Fixed filename, overwritten each release; no site edits needed per release |
@@ -28,6 +28,8 @@ The primary goal is to convince Opentrons protocol authors to install the extens
 | Logo / favicon | Original simple beaker SVG using `currentColor`; doubles as favicon |
 | Animation | Subtle CSS transitions only (hover, hero fade); no animation libraries |
 | Testing | Light: Vitest + React Testing Library smoke tests + theme/CTA logic tests |
+
+Erratum (2026-08-25): light accent adjusted from #0891b2 to #0e7490 — original pair measured 3.68:1/3.51:1, below WCAG AA; spec's AA requirement is binding over example hexes.
 
 ## Hard Rules
 
