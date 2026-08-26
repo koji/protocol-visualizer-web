@@ -56,21 +56,6 @@
   font-size: 0.9rem;
 }
 
-.requestNote {
-  margin: 32px 0 0;
-  color: var(--color-text-muted);
-}
-
-.requestNote a {
-  color: var(--color-accent);
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.requestNote a:hover {
-  text-decoration: underline;
-}
-
 @media (max-width: 1023px) {
   .columns {
     grid-template-columns: 1fr;

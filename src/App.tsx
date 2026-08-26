@@ -4,7 +4,9 @@ import { Header } from './components/Header/Header'
 import { Hero } from './components/Hero/Hero'
 import { Features } from './components/Features/Features'
 import { Screenshot } from './components/Screenshot/Screenshot'
+import { TryCta } from './components/TryCta/TryCta'
 import { Install } from './components/Install/Install'
+import { Disclaimer } from './components/Disclaimer/Disclaimer'
 import { Footer } from './components/Footer/Footer'
 
 export default function App(): ReactNode {
@@ -17,8 +19,10 @@ export default function App(): ReactNode {
         <Hero />
         <Features />
         <Screenshot />
+        <TryCta />
         <Install />
       </main>
+      <Disclaimer />
       <Footer />
     </div>
   )

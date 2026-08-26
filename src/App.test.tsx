@@ -21,6 +21,13 @@ describe('App', () => {
     }
   })
 
+  it('places the try-cta band before the installation guide', () => {
+    render(<App />)
+    const heading = screen.getByRole('heading', { name: 'Want to try the extension?' })
+    const install = screen.getByLabelText('Installation guide')
+    expect(heading.compareDocumentPosition(install) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+  })
+
   it('disclaims affiliation with Opentrons', () => {
     render(<App />)
     expect(screen.getByText(/not affiliated with or endorsed by Opentrons/i)).toBeInTheDocument()

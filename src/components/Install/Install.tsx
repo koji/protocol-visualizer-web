@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react'
-import { feedbackFormUrl } from '../../config/links'
 import styles from './Install.module.css'
 
 export function Install(): ReactNode {
@@ -50,14 +49,6 @@ export function Install(): ReactNode {
             </pre>
           </div>
         </div>
-
-        <p className={styles.requestNote}>
-          Want to try the extension?{' '}
-          <a href={feedbackFormUrl} target="_blank" rel="noreferrer">
-            Request access via our form
-          </a>
-          .
-        </p>
       </div>
     </section>
   )

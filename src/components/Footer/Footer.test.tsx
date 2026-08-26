@@ -19,11 +19,4 @@ describe('Footer', () => {
     expect(link).toHaveAttribute('href', expect.stringContaining('docs.google.com/forms'))
     expect(link).toHaveAttribute('target', '_blank')
   })
-
-  it('disclaims affiliation with Opentrons', () => {
-    render(<Footer />)
-    expect(
-      screen.getByText(/not affiliated with or endorsed by Opentrons/i),
-    ).toBeInTheDocument()
-  })
 })

@@ -28,12 +28,4 @@ describe('Install', () => {
     const methodB = screen.getByLabelText('Method B: Command line')
     expect(within(methodB).getByText('code --install-extension protocol-visualizer.vsix')).toBeInTheDocument()
   })
-
-  it('points trial-seekers to the request form', () => {
-    render(<Install />)
-    expect(screen.getByText(/Want to try the extension\?/i)).toBeInTheDocument()
-    const link = screen.getByRole('link', { name: /Request access via our form/i })
-    expect(link).toHaveAttribute('href', expect.stringContaining('docs.google.com/forms'))
-    expect(link).toHaveAttribute('target', '_blank')
-  })
 })
