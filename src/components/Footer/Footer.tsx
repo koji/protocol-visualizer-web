@@ -8,7 +8,13 @@ export function Footer(): ReactNode {
   return (
     <footer className={styles.footer}>
       <div className={`container ${styles.inner}`}>
-        <small>MIT License © 2026 Koji Kanao</small>
+        <div className={styles.legal}>
+          <small>MIT License © 2026 Koji Kanao</small>
+          <small className={styles.disclaimer}>
+            Protocol Visualizer is an independent project and is not affiliated with or endorsed by
+            Opentrons.
+          </small>
+        </div>
         {links.length > 0 ? (
           <nav className={styles.links} aria-label="External links">
             {links.map((link) => (

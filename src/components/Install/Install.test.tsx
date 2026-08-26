@@ -29,8 +29,11 @@ describe('Install', () => {
     expect(within(methodB).getByText('code --install-extension protocol-visualizer.vsix')).toBeInTheDocument()
   })
 
-  it('repeats the download CTA', () => {
+  it('points trial-seekers to the request form', () => {
     render(<Install />)
-    expect(screen.getAllByRole('button', { name: /Download \.vsix/i }).length).toBeGreaterThan(0)
+    expect(screen.getByText(/Want to try the extension\?/i)).toBeInTheDocument()
+    const link = screen.getByRole('link', { name: /Request access via our form/i })
+    expect(link).toHaveAttribute('href', expect.stringContaining('docs.google.com/forms'))
+    expect(link).toHaveAttribute('target', '_blank')
   })
 })

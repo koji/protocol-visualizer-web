@@ -17,9 +17,11 @@ describe('Hero', () => {
     ).toBeInTheDocument()
   })
 
-  it('contains the primary CTA in its disabled state', () => {
+  it('links the primary CTA to the request form', () => {
     render(<Hero />)
-    expect(screen.getByRole('button', { name: /Download \.vsix/i })).toBeDisabled()
+    const link = screen.getByRole('link', { name: /request access/i })
+    expect(link).toHaveAttribute('href', expect.stringContaining('docs.google.com/forms'))
+    expect(link).toHaveAttribute('target', '_blank')
   })
 
   it('marks the extension as preview', () => {

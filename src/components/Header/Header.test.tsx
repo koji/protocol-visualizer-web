@@ -18,9 +18,12 @@ describe('Header', () => {
     expect(screen.getByRole('link', { name: 'Install' })).toHaveAttribute('href', '#install')
   })
 
-  it('contains the download CTA in its disabled state', () => {
+  it('links to the request form', () => {
     setup()
-    expect(screen.getByRole('button', { name: /Download \.vsix/i })).toBeDisabled()
+    expect(screen.getByRole('link', { name: /request access/i })).toHaveAttribute(
+      'href',
+      expect.stringContaining('docs.google.com/forms'),
+    )
   })
 
   it('contains the theme toggle', () => {

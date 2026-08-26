@@ -56,8 +56,19 @@
   font-size: 0.9rem;
 }
 
-.ctaRow {
-  margin-top: 32px;
+.requestNote {
+  margin: 32px 0 0;
+  color: var(--color-text-muted);
+}
+
+.requestNote a {
+  color: var(--color-accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.requestNote a:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 1023px) {

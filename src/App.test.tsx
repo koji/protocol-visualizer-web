@@ -12,13 +12,17 @@ describe('App', () => {
     expect(screen.getByLabelText('Installation guide')).toBeInTheDocument()
   })
 
-  it('starts the download CTA in the disabled Coming soon state', () => {
+  it('points every call-to-action at the request form', () => {
     render(<App />)
-    const cta = screen.getAllByRole('button', { name: /Download \.vsix/i })
-    expect(cta.length).toBeGreaterThanOrEqual(2)
-    for (const button of cta) {
-      expect(button).toBeDisabled()
-      expect(button).toHaveTextContent('Coming soon')
+    const ctas = screen.getAllByRole('link', { name: /request access/i })
+    expect(ctas.length).toBeGreaterThanOrEqual(3)
+    for (const link of ctas) {
+      expect(link).toHaveAttribute('href', expect.stringContaining('docs.google.com/forms'))
     }
+  })
+
+  it('disclaims affiliation with Opentrons', () => {
+    render(<App />)
+    expect(screen.getByText(/not affiliated with or endorsed by Opentrons/i)).toBeInTheDocument()
   })
 })

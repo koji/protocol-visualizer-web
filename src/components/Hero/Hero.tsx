@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 import { site } from '../../config/site'
 import { BeakerLogo } from '../BeakerLogo/BeakerLogo'
-import { DownloadButton } from '../DownloadButton/DownloadButton'
+import { RequestAccessButton } from '../RequestAccess/RequestAccessButton'
 import styles from './Hero.module.css'
 
 export function Hero(): ReactNode {
@@ -15,7 +15,7 @@ export function Hero(): ReactNode {
           </div>
           <p className={styles.tagline}>{site.tagline}</p>
           <div className={styles.ctaRow}>
-            <DownloadButton />
+            <RequestAccessButton />
             <a className={styles.guideLink} href="#install">
               Installation guide ↓
             </a>

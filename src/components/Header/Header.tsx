@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import type { Theme } from '../../hooks/useTheme'
 import { site } from '../../config/site'
 import { BeakerLogo } from '../BeakerLogo/BeakerLogo'
-import { DownloadButton } from '../DownloadButton/DownloadButton'
+import { RequestAccessButton } from '../RequestAccess/RequestAccessButton'
 import { ThemeToggle } from '../ThemeToggle/ThemeToggle'
 import styles from './Header.module.css'
 
@@ -33,7 +33,7 @@ export function Header({ theme, onToggleTheme }: HeaderProps): ReactNode {
           ))}
         </nav>
         <div className={styles.actions}>
-          <DownloadButton compact />
+          <RequestAccessButton compact />
           <ThemeToggle theme={theme} onToggleTheme={onToggleTheme} />
         </div>
       </div>

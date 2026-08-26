@@ -14,25 +14,12 @@
   transition: background 0.15s ease, transform 0.15s ease;
 }
 
-.button:not(:disabled):hover {
+.button:hover {
   background: var(--color-accent-strong);
   transform: translateY(-1px);
-}
-
-.button:disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
 }
 
 .compact {
   padding: 8px 16px;
   font-size: 0.875rem;
-}
-
-.badge {
-  padding: 2px 8px;
-  border-radius: 999px;
-  background: rgb(255 255 255 / 0.25);
-  font-size: 0.75rem;
-  font-weight: 500;
 }

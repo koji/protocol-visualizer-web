@@ -13,6 +13,16 @@
   gap: 12px;
 }
 
+.legal {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.disclaimer {
+  opacity: 0.8;
+}
+
 .links {
   display: flex;
   gap: 20px;
