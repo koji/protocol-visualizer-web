@@ -12,4 +12,11 @@ describe('Footer', () => {
     render(<Footer />)
     expect(screen.queryByRole('link', { name: 'GitHub' })).not.toBeInTheDocument()
   })
+
+  it('links to the feedback form', () => {
+    render(<Footer />)
+    const link = screen.getByRole('link', { name: 'Feedback' })
+    expect(link).toHaveAttribute('href', expect.stringContaining('docs.google.com/forms'))
+    expect(link).toHaveAttribute('target', '_blank')
+  })
 })

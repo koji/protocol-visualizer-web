@@ -3,10 +3,15 @@ import { describe, expect, it } from 'vitest'
 import { Screenshot } from './Screenshot'
 
 describe('Screenshot', () => {
-  it('shows a labelled placeholder figure', () => {
+  it('shows the live demo animation', () => {
     render(<Screenshot />)
-    expect(screen.getByRole('img', { name: /Protocol Visualizer screenshot placeholder/i }))
-      .toBeInTheDocument()
-    expect(screen.getByText(/Extension screenshot coming soon/i)).toBeInTheDocument()
+    const img = screen.getByRole('img', {
+      name: /Protocol Visualizer visualizing an Opentrons protocol/i,
+    })
+    expect(img).toHaveAttribute(
+      'src',
+      'https://github.com/user-attachments/assets/eeb96be5-8334-4370-bd4a-1564cb12d690',
+    )
+    expect(screen.getByText(/Protocol Visualizer in action/i)).toBeInTheDocument()
   })
 })

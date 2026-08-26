@@ -1,20 +1,21 @@
 import type { ReactNode } from 'react'
-import { BeakerLogo } from '../BeakerLogo/BeakerLogo'
 import styles from './Screenshot.module.css'
+
+const DEMO_GIF =
+  'https://github.com/user-attachments/assets/eeb96be5-8334-4370-bd4a-1564cb12d690'
 
 export function Screenshot(): ReactNode {
   return (
     <section className={styles.section} aria-label="Screenshot">
       <div className="container">
         <figure className={styles.figure}>
-          <div
-            role="img"
-            aria-label="Protocol Visualizer screenshot placeholder"
-            className={styles.placeholder}
-          >
-            <BeakerLogo className={styles.beaker} />
-          </div>
-          <figcaption className={styles.caption}>Extension screenshot coming soon</figcaption>
+          <img
+            className={styles.demo}
+            src={DEMO_GIF}
+            alt="Protocol Visualizer visualizing an Opentrons protocol on a simulated deck"
+            loading="lazy"
+          />
+          <figcaption className={styles.caption}>Protocol Visualizer in action</figcaption>
         </figure>
       </div>
     </section>

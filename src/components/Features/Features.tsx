@@ -10,27 +10,32 @@ export const FEATURES: Feature[] = [
   {
     title: 'Real-time Deck Visualization',
     description:
-      'Watch pipette moves, labware states, and liquid volume changes render as your protocol runs.',
+      'Deck state and liquid volume changes render in real time through an interactive panel while your protocol runs.',
   },
   {
     title: 'Auto-analysis on Save',
-    description: 'Analysis reruns automatically every time you save your protocol file.',
+    description:
+      'The simulation automatically reruns whenever you save changes (Ctrl+S / Cmd+S) to your protocol file.',
   },
   {
     title: 'Runtime Parameters UI',
-    description: 'Input fields are generated for runtime parameters; hit Analyze to apply them.',
+    description:
+      'Input fields are generated for Opentrons Runtime Parameters; hit Analyze to apply them — your original code is never modified.',
   },
   {
     title: 'Custom Labware Support',
-    description: 'Place custom labware JSON definitions next to your protocol file and they just work.',
+    description:
+      'Place custom labware definition files (.json) in the same directory as your protocol file and they just work.',
   },
   {
     title: 'Pop-out Window',
-    description: "Detach the visualizer to a separate window via VSCode's Auxiliary Window support.",
+    description:
+      "Pop the panel out to its own window or drag the tab to another monitor via VSCode's Auxiliary Window support.",
   },
   {
     title: 'Step Jumper',
-    description: 'Jump straight to any protocol step by number from the Protocol Steps panel.',
+    description:
+      'Enter any step number under Protocol Steps and hit Enter to jump the visualization state instantly.',
   },
 ]
 

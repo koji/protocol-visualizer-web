@@ -9,7 +9,10 @@ export function Hero(): ReactNode {
     <section className={styles.hero}>
       <div className={`container ${styles.inner}`}>
         <div className={styles.copy}>
-          <h1 className={styles.title}>{site.productName}</h1>
+          <div className={styles.titleRow}>
+            <h1 className={styles.title}>{site.productName}</h1>
+            <span className={styles.badge}>{site.status}</span>
+          </div>
           <p className={styles.tagline}>{site.tagline}</p>
           <div className={styles.ctaRow}>
             <DownloadButton />

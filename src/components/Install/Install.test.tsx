@@ -15,6 +15,12 @@ describe('Install', () => {
     expect(screen.getByText('pip install opentrons==9.0.0')).toBeInTheDocument()
   })
 
+  it('mentions interpreter selection and separate environments for Flex and OT-2', () => {
+    render(<Install />)
+    expect(screen.getByText(/Python: Select Interpreter/i)).toBeInTheDocument()
+    expect(screen.getByText(/separate virtual environment/i)).toBeInTheDocument()
+  })
+
   it('explains both install methods', () => {
     render(<Install />)
     const methodA = screen.getByLabelText('Method A: Command Palette')

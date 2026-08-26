@@ -23,6 +23,14 @@ export function Install(): ReactNode {
                 For OT-2 use <code className={styles.codeInline}>pip install opentrons==9.0.0</code>{' '}
                 (opentrons 9.1.0+ dropped OT-2 support)
               </li>
+              <li>
+                Select the matching Python interpreter in VSCode via{' '}
+                <code>Python: Select Interpreter</code>
+              </li>
+              <li>
+                Using both Flex and OT-2? Keep them in a separate virtual environment each and
+                switch per protocol.
+              </li>
             </ul>
           </div>
 

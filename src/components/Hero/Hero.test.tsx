@@ -22,6 +22,11 @@ describe('Hero', () => {
     expect(screen.getByRole('button', { name: /Download \.vsix/i })).toBeDisabled()
   })
 
+  it('marks the extension as preview', () => {
+    render(<Hero />)
+    expect(screen.getByText('Preview')).toBeInTheDocument()
+  })
+
   it('links down to the installation guide', () => {
     render(<Hero />)
     expect(screen.getByRole('link', { name: /Installation guide/i })).toHaveAttribute(

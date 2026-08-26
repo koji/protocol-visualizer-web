@@ -9,10 +9,11 @@ describe('Features', () => {
     expect(FEATURES).toHaveLength(6)
   })
 
-  it('renders each feature title', () => {
+  it('renders each feature title and description', () => {
     render(<Features />)
     for (const feature of FEATURES) {
       expect(screen.getByText(feature.title)).toBeInTheDocument()
+      expect(screen.getByText(feature.description)).toBeInTheDocument()
     }
   })
 
