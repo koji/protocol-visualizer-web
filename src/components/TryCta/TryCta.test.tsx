@@ -6,10 +6,16 @@ describe('TryCta', () => {
   it('asks visitors to request access via the form', () => {
     render(<TryCta />)
     expect(
-      screen.getByRole('heading', { level: 2, name: 'Want to try the extension?' }),
+      screen.getByRole('heading', {
+        level: 2,
+        name: 'Want to try the extension?',
+      }),
     ).toBeInTheDocument()
     const link = screen.getByRole('link', { name: /request access/i })
-    expect(link).toHaveAttribute('href', expect.stringContaining('docs.google.com/forms'))
+    expect(link).toHaveAttribute(
+      'href',
+      expect.stringContaining('docs.google.com/forms'),
+    )
     expect(link).toHaveAttribute('target', '_blank')
   })
 

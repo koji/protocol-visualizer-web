@@ -12,7 +12,12 @@ export function Footer(): ReactNode {
         {links.length > 0 ? (
           <nav className={styles.links} aria-label="External links">
             {links.map((link) => (
-              <a key={link.label} href={link.url} target="_blank" rel="noreferrer">
+              <a
+                key={link.label}
+                href={link.url}
+                target="_blank"
+                rel="noreferrer"
+              >
                 {link.label}
               </a>
             ))}

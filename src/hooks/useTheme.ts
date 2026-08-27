@@ -12,7 +12,8 @@ function getInitialTheme(): Theme {
     // localStorage unavailable (e.g. private mode) — fall through
   }
   try {
-    if (window.matchMedia('(prefers-color-scheme: light)').matches) return 'light'
+    if (window.matchMedia('(prefers-color-scheme: light)').matches)
+      return 'light'
   } catch {
     // matchMedia unavailable — default below
   }

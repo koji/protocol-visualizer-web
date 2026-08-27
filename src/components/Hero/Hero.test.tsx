@@ -20,7 +20,10 @@ describe('Hero', () => {
   it('links the primary CTA to the request form', () => {
     render(<Hero />)
     const link = screen.getByRole('link', { name: /request access/i })
-    expect(link).toHaveAttribute('href', expect.stringContaining('docs.google.com/forms'))
+    expect(link).toHaveAttribute(
+      'href',
+      expect.stringContaining('docs.google.com/forms'),
+    )
     expect(link).toHaveAttribute('target', '_blank')
   })
 
@@ -31,9 +34,8 @@ describe('Hero', () => {
 
   it('links down to the installation guide', () => {
     render(<Hero />)
-    expect(screen.getByRole('link', { name: /Installation guide/i })).toHaveAttribute(
-      'href',
-      '#install',
-    )
+    expect(
+      screen.getByRole('link', { name: /Installation guide/i }),
+    ).toHaveAttribute('href', '#install')
   })
 })

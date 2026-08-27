@@ -14,7 +14,9 @@ describe('activeLinks', () => {
       { label: 'GitHub', url: '' },
       { label: 'Feedback', url: 'https://example.com/form' },
     ]
-    expect(activeLinks(links)).toEqual([{ label: 'Feedback', url: 'https://example.com/form' }])
+    expect(activeLinks(links)).toEqual([
+      { label: 'Feedback', url: 'https://example.com/form' },
+    ])
   })
 
   it('keeps links that have urls', () => {
@@ -22,6 +24,8 @@ describe('activeLinks', () => {
       { label: 'GitHub', url: 'https://github.com/example/repo' },
       { label: 'Docs', url: '' },
     ]
-    expect(activeLinks(links)).toEqual([{ label: 'GitHub', url: 'https://github.com/example/repo' }])
+    expect(activeLinks(links)).toEqual([
+      { label: 'GitHub', url: 'https://github.com/example/repo' },
+    ])
   })
 })

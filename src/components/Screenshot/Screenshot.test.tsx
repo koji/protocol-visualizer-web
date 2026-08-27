@@ -12,6 +12,8 @@ describe('Screenshot', () => {
       'src',
       'https://github.com/user-attachments/assets/eeb96be5-8334-4370-bd4a-1564cb12d690',
     )
-    expect(screen.getByText(/Protocol Visualizer in action/i)).toBeInTheDocument()
+    expect(
+      screen.getByText(/Protocol Visualizer in action/i),
+    ).toBeInTheDocument()
   })
 })
