@@ -2,7 +2,11 @@
   overflow: hidden;
   border-bottom: 1px solid var(--color-border);
   background:
-    radial-gradient(60% 80% at 80% 10%, color-mix(in srgb, var(--color-accent) 12%, transparent), transparent),
+    radial-gradient(
+      60% 80% at 80% 10%,
+      color-mix(in srgb, var(--color-accent) 12%, transparent),
+      transparent
+    ),
     var(--color-bg);
   animation: heroFade 0.6s ease both;
 }
@@ -85,7 +89,9 @@
   width: clamp(160px, 22vw, 260px);
   height: auto;
   color: var(--color-accent);
-  filter: drop-shadow(0 0 40px color-mix(in srgb, var(--color-accent) 30%, transparent));
+  filter: drop-shadow(
+    0 0 40px color-mix(in srgb, var(--color-accent) 30%, transparent)
+  );
 }
 
 @media (max-width: 1023px) {

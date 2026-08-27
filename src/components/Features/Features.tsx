@@ -43,7 +43,9 @@ export function Features(): ReactNode {
   return (
     <section id="features" className={styles.section} aria-label="Features">
       <div className="container">
-        <h2 className={styles.heading}>Everything you need to see your protocol run</h2>
+        <h2 className={styles.heading}>
+          Everything you need to see your protocol run
+        </h2>
         <ul className={styles.grid}>
           {FEATURES.map((feature) => (
             <li key={feature.title}>

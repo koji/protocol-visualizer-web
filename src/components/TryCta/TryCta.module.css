@@ -1,7 +1,11 @@
 .band {
   border-block: 1px solid var(--color-border);
   background:
-    radial-gradient(50% 120% at 50% 0%, color-mix(in srgb, var(--color-accent) 14%, transparent), transparent),
+    radial-gradient(
+      50% 120% at 50% 0%,
+      color-mix(in srgb, var(--color-accent) 14%, transparent),
+      transparent
+    ),
     var(--color-surface);
 }
 

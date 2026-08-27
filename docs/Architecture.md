@@ -1,6 +1,6 @@
 # Overall Architecture and Data Flow
 
-This extension is designed to operate through the collaboration of three components: the **VSCode Extension Host (backend)**, **React Webview (frontend)**, and **Python Subprocess (simulation environment)**. 
+This extension is designed to operate through the collaboration of three components: the **VSCode Extension Host (backend)**, **React Webview (frontend)**, and **Python Subprocess (simulation environment)**.
 
 ```
 [ VSCode Editor ] ➔ (Click the "Reanalyze" button)

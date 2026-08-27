@@ -1,4 +1,3 @@
-
 # Setup Protocol Vizualizer
 
 ## 1. Prerequisites
@@ -6,13 +5,13 @@
 The following are required to use the extension:
 
 - **Python 3.8 or later** must be installed, and the `python3` command must be available in PATH
-- The **`opentrons`** Python package must be installed  
+- The **`opentrons`** Python package must be installed
 
 ```bash
 pip install opentrons
 ```
 
-**Note:** 
+**Note:**
 If you need to use Protocol Vizualizer with an OT-2, you will need to use opentrons==9.0.0 pacakge since opentrons 9.1.0+ is not compatible with OT-2.
 
 ```bash
@@ -20,7 +19,8 @@ pip install opentrons==9.0.0
 ```
 
 ## 2. Installation (from `.vsix`)
-Download `protocol-viz-x.x.x.vsix` from GitHub Releases or another source, then install it in VSCode using one of the following methods.  
+
+Download `protocol-viz-x.x.x.vsix` from GitHub Releases or another source, then install it in VSCode using one of the following methods.
 
 **Method A: From the Command Palette**
 

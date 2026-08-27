@@ -15,7 +15,9 @@ export function Screenshot(): ReactNode {
             alt="Protocol Visualizer visualizing an Opentrons protocol on a simulated deck"
             loading="lazy"
           />
-          <figcaption className={styles.caption}>Protocol Visualizer in action</figcaption>
+          <figcaption className={styles.caption}>
+            Protocol Visualizer in action
+          </figcaption>
         </figure>
       </div>
     </section>

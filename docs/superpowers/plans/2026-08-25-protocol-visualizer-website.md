@@ -30,6 +30,7 @@
 ### Task 1: Scaffold project and tooling
 
 **Files:**
+
 - Create: `package.json` (overwrite existing stub)
 - Create: `tsconfig.json`
 - Create: `vite.config.ts`
@@ -44,6 +45,7 @@
 - Create: `src/test/setup.ts`
 
 **Interfaces:**
+
 - Consumes: nothing.
 - Produces: runnable Vite app whose default export is `App` from `src/App.tsx` returning `ReactNode`; test scripts `npm run lint`, `npm run test`, `npm run build`. Later tasks replace `App.tsx` content but keep the default export shape.
 
@@ -238,6 +240,7 @@ import '@testing-library/jest-dom/vitest'
 - [ ] **Step 8: Install dependencies**
 
 Run:
+
 ```bash
 npm install react@^19 react-dom@^19
 npm install -D vite @vitejs/plugin-react typescript@~5.9 eslint @eslint/js typescript-eslint eslint-plugin-react-hooks eslint-plugin-react-refresh globals prettier vitest jsdom @testing-library/react @testing-library/jest-dom @types/react@^19 @types/react-dom@^19
@@ -262,6 +265,7 @@ git commit -m "chore: scaffold Vite + React 19 + TypeScript + Vitest tooling"
 ### Task 2: Theme system (tokens, useTheme, ThemeToggle, FOUC script)
 
 **Files:**
+
 - Create: `src/styles/tokens.css`
 - Create: `src/hooks/useTheme.ts`
 - Test: `src/hooks/useTheme.test.ts`
@@ -274,6 +278,7 @@ git commit -m "chore: scaffold Vite + React 19 + TypeScript + Vitest tooling"
 - Modify: `src/App.tsx` (own theme state via useTheme)
 
 **Interfaces:**
+
 - Consumes: nothing new.
 - Produces:
   - `export type Theme = 'dark' | 'light'` from `src/hooks/useTheme.ts`
@@ -399,7 +404,8 @@ function getInitialTheme(): Theme {
     // localStorage unavailable (e.g. private mode) — fall through
   }
   try {
-    if (window.matchMedia('(prefers-color-scheme: light)').matches) return 'light'
+    if (window.matchMedia('(prefers-color-scheme: light)').matches)
+      return 'light'
   } catch {
     // matchMedia unavailable — default below
   }
@@ -447,13 +453,17 @@ describe('ThemeToggle', () => {
   it('offers switching to light when current theme is dark', () => {
     const onToggle = vi.fn()
     render(<ThemeToggle theme="dark" onToggleTheme={onToggle} />)
-    expect(screen.getByRole('button', { name: 'Switch to light theme' })).toBeInTheDocument()
+    expect(
+      screen.getByRole('button', { name: 'Switch to light theme' }),
+    ).toBeInTheDocument()
   })
 
   it('offers switching to dark when current theme is light', () => {
     const onToggle = vi.fn()
     render(<ThemeToggle theme="light" onToggleTheme={onToggle} />)
-    expect(screen.getByRole('button', { name: 'Switch to dark theme' })).toBeInTheDocument()
+    expect(
+      screen.getByRole('button', { name: 'Switch to dark theme' }),
+    ).toBeInTheDocument()
   })
 
   it('calls onToggleTheme when clicked', () => {
@@ -491,7 +501,16 @@ const LABELS: Record<Theme, string> = {
 
 function SunIcon() {
   return (
-    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+    <svg
+      viewBox="0 0 24 24"
+      width="18"
+      height="18"
+      aria-hidden="true"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    >
       <circle cx="12" cy="12" r="4" />
       <path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
     </svg>
@@ -500,13 +519,26 @@ function SunIcon() {
 
 function MoonIcon() {
   return (
-    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      viewBox="0 0 24 24"
+      width="18"
+      height="18"
+      aria-hidden="true"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" />
     </svg>
   )
 }
 
-export function ThemeToggle({ theme, onToggleTheme }: ThemeToggleProps): ReactNode {
+export function ThemeToggle({
+  theme,
+  onToggleTheme,
+}: ThemeToggleProps): ReactNode {
   return (
     <button
       type="button"
@@ -536,7 +568,9 @@ Create `src/components/ThemeToggle/ThemeToggle.module.css`:
   background: var(--color-surface);
   color: var(--color-text);
   cursor: pointer;
-  transition: border-color 0.15s ease, color 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease;
 }
 
 .toggle:hover {
@@ -567,7 +601,13 @@ body {
 
 :root {
   font-family:
-    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
     sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -626,7 +666,9 @@ In `index.html`, inside `<head>` before `<title>`:
       t = localStorage.getItem('theme')
     } catch (e) {}
     if (t !== 'dark' && t !== 'light') {
-      t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+      t = window.matchMedia('(prefers-color-scheme: light)').matches
+        ? 'light'
+        : 'dark'
     }
     document.documentElement.dataset.theme = t
   })()
@@ -672,6 +714,7 @@ git commit -m "feat: add dark/light theme system with OS detection and persisten
 ### Task 3: Site config, DownloadButton, BeakerLogo, Header
 
 **Files:**
+
 - Create: `src/config/site.ts`
 - Create: `src/config/links.ts` (created now, consumed by Footer in Task 8)
 - Create: `src/components/DownloadButton/DownloadButton.tsx`
@@ -686,6 +729,7 @@ git commit -m "feat: add dark/light theme system with OS detection and persisten
 - Modify: `src/App.tsx` (render Header)
 
 **Interfaces:**
+
 - Consumes: `useTheme` / `Theme` / `ThemeToggle` from Task 2.
 - Produces:
   - `site.productName: string`, `site.tagline: string`, `site.download: { available: boolean; label: string; comingSoonLabel: string; href: string }` from `src/config/site.ts`
@@ -793,8 +837,12 @@ interface DownloadButtonProps {
   compact?: boolean
 }
 
-export function DownloadButton({ compact = false }: DownloadButtonProps): ReactNode {
-  const className = compact ? `${styles.button} ${styles.compact}` : styles.button
+export function DownloadButton({
+  compact = false,
+}: DownloadButtonProps): ReactNode {
+  const className = compact
+    ? `${styles.button} ${styles.compact}`
+    : styles.button
 
   if (!site.download.available) {
     return (
@@ -829,7 +877,9 @@ Create `src/components/DownloadButton/DownloadButton.module.css`:
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  transition: background 0.15s ease, transform 0.15s ease;
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease;
 }
 
 .button:not(:disabled):hover {
@@ -873,7 +923,9 @@ import { BeakerLogo } from './BeakerLogo'
 describe('BeakerLogo', () => {
   it('exposes an accessible name when a label is given', () => {
     const { getByRole } = render(<BeakerLogo label="Protocol Visualizer" />)
-    expect(getByRole('img', { name: 'Protocol Visualizer' })).toBeInTheDocument()
+    expect(
+      getByRole('img', { name: 'Protocol Visualizer' }),
+    ).toBeInTheDocument()
   })
 
   it('is hidden from assistive tech when no label is given', () => {
@@ -903,10 +955,18 @@ interface BeakerLogoProps {
 }
 
 export function BeakerLogo({ className, label }: BeakerLogoProps): ReactNode {
-  const a11y = label ? { role: 'img' as const, 'aria-label': label } : { 'aria-hidden': true }
+  const a11y = label
+    ? { role: 'img' as const, 'aria-label': label }
+    : { 'aria-hidden': true }
 
   return (
-    <svg viewBox="0 0 32 32" className={className} fill="none" xmlns="http://www.w3.org/2000/svg" {...a11y}>
+    <svg
+      viewBox="0 0 32 32"
+      className={className}
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...a11y}
+    >
       {label ? <title>{label}</title> : null}
       <path
         d="M11 4h10M12 4v9.2L6.9 23.3A2.4 2.4 0 0 0 9.06 26.8h13.88a2.4 2.4 0 0 0 2.16-3.5L20 13.2V4"
@@ -915,7 +975,11 @@ export function BeakerLogo({ className, label }: BeakerLogoProps): ReactNode {
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      <path d="M13.1 17.4h5.8l2.75 5.6H10.35l2.75-5.6Z" fill="currentColor" opacity="0.55" />
+      <path
+        d="M13.1 17.4h5.8l2.75 5.6H10.35l2.75-5.6Z"
+        fill="currentColor"
+        opacity="0.55"
+      />
       <circle cx="14.6" cy="21.2" r="0.95" fill="currentColor" />
       <circle cx="18.1" cy="20.4" r="0.6" fill="currentColor" />
     </svg>
@@ -949,18 +1013,28 @@ describe('Header', () => {
 
   it('has section anchors for Features and Install', () => {
     setup()
-    expect(screen.getByRole('link', { name: 'Features' })).toHaveAttribute('href', '#features')
-    expect(screen.getByRole('link', { name: 'Install' })).toHaveAttribute('href', '#install')
+    expect(screen.getByRole('link', { name: 'Features' })).toHaveAttribute(
+      'href',
+      '#features',
+    )
+    expect(screen.getByRole('link', { name: 'Install' })).toHaveAttribute(
+      'href',
+      '#install',
+    )
   })
 
   it('contains the download CTA in its disabled state', () => {
     setup()
-    expect(screen.getByRole('button', { name: /Download \.vsix/i })).toBeDisabled()
+    expect(
+      screen.getByRole('button', { name: /Download \.vsix/i }),
+    ).toBeDisabled()
   })
 
   it('contains the theme toggle', () => {
     setup()
-    expect(screen.getByRole('button', { name: 'Switch to light theme' })).toBeInTheDocument()
+    expect(
+      screen.getByRole('button', { name: 'Switch to light theme' }),
+    ).toBeInTheDocument()
   })
 })
 ```
@@ -1122,6 +1196,7 @@ git commit -m "feat: add header, beaker logo, download CTA and site config"
 ### Task 4: Hero section and shared container class
 
 **Files:**
+
 - Create: `src/components/Hero/Hero.tsx`
 - Create: `src/components/Hero/Hero.module.css`
 - Test: `src/components/Hero/Hero.test.tsx`
@@ -1129,6 +1204,7 @@ git commit -m "feat: add header, beaker logo, download CTA and site config"
 - Modify: `src/App.tsx` (render Hero)
 
 **Interfaces:**
+
 - Consumes: `site.tagline` from Task 3; `DownloadButton`; `BeakerLogo`.
 - Produces: `export function Hero(): ReactNode`; global `.container` utility class (max-width 1120px, centered).
 
@@ -1170,15 +1246,16 @@ describe('Hero', () => {
 
   it('contains the primary CTA in its disabled state', () => {
     render(<Hero />)
-    expect(screen.getByRole('button', { name: /Download \.vsix/i })).toBeDisabled()
+    expect(
+      screen.getByRole('button', { name: /Download \.vsix/i }),
+    ).toBeDisabled()
   })
 
   it('links down to the installation guide', () => {
     render(<Hero />)
-    expect(screen.getByRole('link', { name: /Installation guide/i })).toHaveAttribute(
-      'href',
-      '#install',
-    )
+    expect(
+      screen.getByRole('link', { name: /Installation guide/i }),
+    ).toHaveAttribute('href', '#install')
   })
 })
 ```
@@ -1229,7 +1306,11 @@ Create `src/components/Hero/Hero.module.css`:
   overflow: hidden;
   border-bottom: 1px solid var(--color-border);
   background:
-    radial-gradient(60% 80% at 80% 10%, color-mix(in srgb, var(--color-accent) 12%, transparent), transparent),
+    radial-gradient(
+      60% 80% at 80% 10%,
+      color-mix(in srgb, var(--color-accent) 12%, transparent),
+      transparent
+    ),
     var(--color-bg);
   animation: heroFade 0.6s ease both;
 }
@@ -1293,7 +1374,9 @@ Create `src/components/Hero/Hero.module.css`:
   width: clamp(160px, 22vw, 260px);
   height: auto;
   color: var(--color-accent);
-  filter: drop-shadow(0 0 40px color-mix(in srgb, var(--color-accent) 30%, transparent));
+  filter: drop-shadow(
+    0 0 40px color-mix(in srgb, var(--color-accent) 30%, transparent)
+  );
 }
 
 @media (max-width: 1023px) {
@@ -1339,12 +1422,14 @@ git commit -m "feat: add hero section"
 ### Task 5: Features section
 
 **Files:**
+
 - Create: `src/components/Features/Features.tsx`
 - Create: `src/components/Features/Features.module.css`
 - Test: `src/components/Features/Features.test.tsx`
 - Modify: `src/App.tsx` (render Features under Hero)
 
 **Interfaces:**
+
 - Consumes: nothing outside styles/tokens.
 - Produces: `export function Features(): ReactNode`; `export interface Feature { title: string; description: string }`; `export const FEATURES: Feature[]`.
 
@@ -1400,27 +1485,33 @@ export interface Feature {
 export const FEATURES: Feature[] = [
   {
     title: 'Real-time Deck Visualization',
-    description: 'Watch pipette moves, labware states, and liquid volume changes render as your protocol runs.',
+    description:
+      'Watch pipette moves, labware states, and liquid volume changes render as your protocol runs.',
   },
   {
     title: 'Auto-analysis on Save',
-    description: 'Analysis reruns automatically every time you save your protocol file.',
+    description:
+      'Analysis reruns automatically every time you save your protocol file.',
   },
   {
     title: 'Runtime Parameters UI',
-    description: 'Input fields are generated for runtime parameters; hit Analyze to apply them.',
+    description:
+      'Input fields are generated for runtime parameters; hit Analyze to apply them.',
   },
   {
     title: 'Custom Labware Support',
-    description: 'Place custom labware JSON definitions next to your protocol file and they just work.',
+    description:
+      'Place custom labware JSON definitions next to your protocol file and they just work.',
   },
   {
     title: 'Pop-out Window',
-    description: "Detach the visualizer to a separate window via VSCode's Auxiliary Window support.",
+    description:
+      "Detach the visualizer to a separate window via VSCode's Auxiliary Window support.",
   },
   {
     title: 'Step Jumper',
-    description: 'Jump straight to any protocol step by number from the Protocol Steps panel.',
+    description:
+      'Jump straight to any protocol step by number from the Protocol Steps panel.',
   },
 ]
 
@@ -1428,7 +1519,9 @@ export function Features(): ReactNode {
   return (
     <section id="features" className={styles.section} aria-label="Features">
       <div className="container">
-        <h2 className={styles.heading}>Everything you need to see your protocol run</h2>
+        <h2 className={styles.heading}>
+          Everything you need to see your protocol run
+        </h2>
         <ul className={styles.grid}>
           {FEATURES.map((feature) => (
             <li key={feature.title}>
@@ -1473,7 +1566,9 @@ Create `src/components/Features/Features.module.css`:
   border: 1px solid var(--color-border);
   border-radius: 14px;
   background: var(--color-surface);
-  transition: border-color 0.15s ease, transform 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    transform 0.15s ease;
 }
 
 .card:hover {
@@ -1533,12 +1628,14 @@ git commit -m "feat: add features section"
 ### Task 6: Screenshot section
 
 **Files:**
+
 - Create: `src/components/Screenshot/Screenshot.tsx`
 - Create: `src/components/Screenshot/Screenshot.module.css`
 - Test: `src/components/Screenshot/Screenshot.test.tsx`
 - Modify: `src/App.tsx` (render Screenshot after Features)
 
 **Interfaces:**
+
 - Consumes: nothing outside styles.
 - Produces: `export function Screenshot(): ReactNode`.
 
@@ -1554,9 +1651,14 @@ import { Screenshot } from './Screenshot'
 describe('Screenshot', () => {
   it('shows a labelled placeholder figure', () => {
     render(<Screenshot />)
-    expect(screen.getByRole('img', { name: /Protocol Visualizer screenshot placeholder/i }))
-      .toBeInTheDocument()
-    expect(screen.getByText(/Extension screenshot coming soon/i)).toBeInTheDocument()
+    expect(
+      screen.getByRole('img', {
+        name: /Protocol Visualizer screenshot placeholder/i,
+      }),
+    ).toBeInTheDocument()
+    expect(
+      screen.getByText(/Extension screenshot coming soon/i),
+    ).toBeInTheDocument()
   })
 })
 ```
@@ -1587,7 +1689,9 @@ export function Screenshot(): ReactNode {
           >
             <BeakerLogo className={styles.beaker} />
           </div>
-          <figcaption className={styles.caption}>Extension screenshot coming soon</figcaption>
+          <figcaption className={styles.caption}>
+            Extension screenshot coming soon
+          </figcaption>
         </figure>
       </div>
     </section>
@@ -1659,12 +1763,14 @@ git commit -m "feat: add screenshot placeholder section"
 ### Task 7: Install section
 
 **Files:**
+
 - Create: `src/components/Install/Install.tsx`
 - Create: `src/components/Install/Install.module.css`
 - Test: `src/components/Install/Install.test.tsx`
 - Modify: `src/App.tsx` (render Install after Screenshot)
 
 **Interfaces:**
+
 - Consumes: `DownloadButton`.
 - Produces: `export function Install(): ReactNode`; section has `id="install"`.
 
@@ -1680,7 +1786,10 @@ import { Install } from './Install'
 describe('Install', () => {
   it('anchors at id=install', () => {
     render(<Install />)
-    expect(screen.getByLabelText('Installation guide')).toHaveAttribute('id', 'install')
+    expect(screen.getByLabelText('Installation guide')).toHaveAttribute(
+      'id',
+      'install',
+    )
   })
 
   it('lists prerequisites including the OT-2 pin note', () => {
@@ -1693,14 +1802,22 @@ describe('Install', () => {
   it('explains both install methods', () => {
     render(<Install />)
     const methodA = screen.getByLabelText('Method A: Command Palette')
-    expect(within(methodA).getByText('Extensions: Install from VSIX...')).toBeInTheDocument()
+    expect(
+      within(methodA).getByText('Extensions: Install from VSIX...'),
+    ).toBeInTheDocument()
     const methodB = screen.getByLabelText('Method B: Command line')
-    expect(within(methodB).getByText('code --install-extension protocol-visualizer.vsix')).toBeInTheDocument()
+    expect(
+      within(methodB).getByText(
+        'code --install-extension protocol-visualizer.vsix',
+      ),
+    ).toBeInTheDocument()
   })
 
   it('repeats the download CTA', () => {
     render(<Install />)
-    expect(screen.getAllByRole('button', { name: /Download \.vsix/i }).length).toBeGreaterThan(0)
+    expect(
+      screen.getAllByRole('button', { name: /Download \.vsix/i }).length,
+    ).toBeGreaterThan(0)
   })
 })
 ```
@@ -1721,7 +1838,11 @@ import styles from './Install.module.css'
 
 export function Install(): ReactNode {
   return (
-    <section id="install" className={styles.section} aria-label="Installation guide">
+    <section
+      id="install"
+      className={styles.section}
+      aria-label="Installation guide"
+    >
       <div className="container">
         <h2 className={styles.heading}>Installation</h2>
 
@@ -1730,14 +1851,18 @@ export function Install(): ReactNode {
             <h3 className={styles.subHeading}>Prerequisites</h3>
             <ul className={styles.list}>
               <li>
-                <strong>Python 3.8 or later</strong>, with <code>python3</code> available in PATH
+                <strong>Python 3.8 or later</strong>, with <code>python3</code>{' '}
+                available in PATH
               </li>
               <li>
                 The <code>opentrons</code> Python package:{' '}
                 <code className={styles.codeInline}>pip install opentrons</code>
               </li>
               <li>
-                For OT-2 use <code className={styles.codeInline}>pip install opentrons==9.0.0</code>{' '}
+                For OT-2 use{' '}
+                <code className={styles.codeInline}>
+                  pip install opentrons==9.0.0
+                </code>{' '}
                 (opentrons 9.1.0+ dropped OT-2 support)
               </li>
             </ul>
@@ -1746,9 +1871,16 @@ export function Install(): ReactNode {
           <div className={styles.block} aria-label="Method A: Command Palette">
             <h3 className={styles.subHeading}>Method A: Command Palette</h3>
             <ol className={styles.list}>
-              <li>Open the Command Palette (<kbd>Cmd+Shift+P</kbd> / <kbd>Ctrl+Shift+P</kbd>)</li>
-              <li>Select <code>Extensions: Install from VSIX...</code></li>
-              <li>Choose the downloaded <code>.vsix</code> file</li>
+              <li>
+                Open the Command Palette (<kbd>Cmd+Shift+P</kbd> /{' '}
+                <kbd>Ctrl+Shift+P</kbd>)
+              </li>
+              <li>
+                Select <code>Extensions: Install from VSIX...</code>
+              </li>
+              <li>
+                Choose the downloaded <code>.vsix</code> file
+              </li>
             </ol>
           </div>
 
@@ -1871,6 +2003,7 @@ git commit -m "feat: add installation section with prerequisites and methods"
 ### Task 8: Footer section
 
 **Files:**
+
 - Create: `src/components/Footer/Footer.tsx`
 - Create: `src/components/Footer/Footer.module.css`
 - Test: `src/components/Footer/Footer.test.tsx`
@@ -1878,6 +2011,7 @@ git commit -m "feat: add installation section with prerequisites and methods"
 - Modify: `src/App.tsx` (render Footer after main)
 
 **Interfaces:**
+
 - Consumes: `externalLinks` / `activeLinks` from `src/config/links.ts` (Task 3).
 - Produces: `export function Footer(): ReactNode`.
 
@@ -1899,7 +2033,9 @@ describe('activeLinks', () => {
       { label: 'GitHub', url: 'https://github.com/example/repo' },
       { label: 'Docs', url: '' },
     ]
-    expect(activeLinks(links)).toEqual([{ label: 'GitHub', url: 'https://github.com/example/repo' }])
+    expect(activeLinks(links)).toEqual([
+      { label: 'GitHub', url: 'https://github.com/example/repo' },
+    ])
   })
 })
 ```
@@ -1921,12 +2057,16 @@ import { Footer } from './Footer'
 describe('Footer', () => {
   it('shows the license line', () => {
     render(<Footer />)
-    expect(screen.getByText('MIT License © 2026 Koji Kanao')).toBeInTheDocument()
+    expect(
+      screen.getByText('MIT License © 2026 Koji Kanao'),
+    ).toBeInTheDocument()
   })
 
   it('hides GitHub while the repository URL is empty', () => {
     render(<Footer />)
-    expect(screen.queryByRole('link', { name: 'GitHub' })).not.toBeInTheDocument()
+    expect(
+      screen.queryByRole('link', { name: 'GitHub' }),
+    ).not.toBeInTheDocument()
   })
 })
 ```
@@ -1955,7 +2095,12 @@ export function Footer(): ReactNode {
         {links.length > 0 ? (
           <nav className={styles.links} aria-label="External links">
             {links.map((link) => (
-              <a key={link.label} href={link.url} target="_blank" rel="noreferrer">
+              <a
+                key={link.label}
+                href={link.url}
+                target="_blank"
+                rel="noreferrer"
+              >
                 {link.label}
               </a>
             ))}
@@ -2049,11 +2194,13 @@ git commit -m "feat: add footer with config-driven external links"
 ### Task 9: Page metadata, favicon, final verification
 
 **Files:**
+
 - Modify: `index.html` (full meta + OG tags + favicon link)
 - Create: `public/favicon.svg`
 - Modify: `src/App.test.tsx` (integration assertions across all sections)
 
 **Interfaces:**
+
 - Consumes: everything built so far.
 - Produces: complete deployable static site in `dist/`.
 
@@ -2069,7 +2216,10 @@ git commit -m "feat: add footer with config-driven external links"
       name="description"
       content="A VSCode extension that simulates Opentrons Python protocols and visualizes deck state and liquid volumes in real time."
     />
-    <meta property="og:title" content="Protocol Visualizer — Simulate Opentrons protocols in VSCode" />
+    <meta
+      property="og:title"
+      content="Protocol Visualizer — Simulate Opentrons protocols in VSCode"
+    />
     <meta
       property="og:description"
       content="Simulate your Opentrons Python protocols and inspect deck layout and liquid volumes in real time — without leaving VSCode."
@@ -2085,7 +2235,9 @@ git commit -m "feat: add footer with config-driven external links"
           t = localStorage.getItem('theme')
         } catch (e) {}
         if (t !== 'dark' && t !== 'light') {
-          t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+          t = window.matchMedia('(prefers-color-scheme: light)').matches
+            ? 'light'
+            : 'dark'
         }
         document.documentElement.dataset.theme = t
       })()
@@ -2122,8 +2274,9 @@ import App from './App'
 describe('App', () => {
   it('renders every section of the landing page', () => {
     render(<App />)
-    expect(screen.getByRole('heading', { level: 1, name: 'Protocol Visualizer' }))
-      .toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { level: 1, name: 'Protocol Visualizer' }),
+    ).toBeInTheDocument()
     expect(screen.getByLabelText('Features')).toBeInTheDocument()
     expect(screen.getByLabelText('Screenshot')).toBeInTheDocument()
     expect(screen.getByLabelText('Installation guide')).toBeInTheDocument()
